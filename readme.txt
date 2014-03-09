@@ -31,3 +31,8 @@ I did not make the RRSSB github project. I just made it into a Wordpress Plugin.
 = Who made Ridiculously Resonsive Social Sharing Buttons? =
 
 KNI Labs. Check them out here: https://github.com/kni-labs/rrssb
+
+== Screenshots ==
+
+1. screenshot-1.jpg
+2. screenshot-2.jpg
