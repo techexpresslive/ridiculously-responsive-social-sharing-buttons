@@ -2,7 +2,7 @@
 Contributors: aarreedd
 Donate link: http://alanreed.org/donate/
 Tags: Social, Sharing, Buttons, Ridiculously, Responsive
-Requires at least: 3.0.1
+Requires at least: 3.0
 Tested up to: 3.8
 Stable tag: 1.1
 License: Creative Commons Attribution-ShareAlike 4.0 International license
