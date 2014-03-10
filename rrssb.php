@@ -3,7 +3,7 @@
 Plugin Name: Ridiculously Responsive Social Sharing Buttons
 Plugin URI: https://github.com/kni-labs/rrssb
 Description: Ridiculously Responsive Social Sharing Buttons adapted from https://github.com/kni-labs/rrssb.
-Version: 1.1
+Version: trunk
 Author: Alan Reed
 Author URI: http://www.alanreed.org
 Date: 8 March 2014

@@ -4,7 +4,7 @@ Donate link: http://alanreed.org/donate/
 Tags: Social, Sharing, Buttons, Ridiculously, Responsive
 Requires at least: 3.0
 Tested up to: 3.8
-Stable tag: 1.1
+Stable tag: trunk
 License: Creative Commons Attribution-ShareAlike 4.0 International license
 License URI: http://creativecommons.org/licenses/by-sa/4.0/legalcode
 
