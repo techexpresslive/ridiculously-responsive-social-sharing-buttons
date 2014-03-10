@@ -4,9 +4,9 @@ Donate link: http://alanreed.org/
 Tags: Social, Sharing, Buttons, Ridiculously, Responsive
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 14.3.9
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 1.1
+License: MIT
+License URI: http://opensource.org/licenses/MIT
 
 Ridiculously Responsive Social Sharing Buttons. The last social sharing buttons you will ever need. 
 
