@@ -24,7 +24,6 @@ I did not make the RRSSB github project. I just made it into a Wordpress Plugin.
 
 1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. There is no admin settings for this. The plugin is very simple. If you need to change something then just go modify rrssb.php.
 
 == Frequently Asked Questions ==
 
