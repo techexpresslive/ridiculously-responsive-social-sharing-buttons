@@ -5,8 +5,8 @@ Tags: Social, Sharing, Buttons, Ridiculously, Responsive
 Requires at least: 3.0.1
 Tested up to: 3.8
 Stable tag: 1.1
-License: MIT
-License URI: http://opensource.org/licenses/MIT
+License: Creative Commons Attribution-ShareAlike 4.0 International license
+License URI: http://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 Ridiculously Responsive Social Sharing Buttons. The last social sharing buttons you will ever need. 
 
