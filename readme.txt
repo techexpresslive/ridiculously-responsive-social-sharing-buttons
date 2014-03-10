@@ -18,7 +18,7 @@ RRSSB is built with SASS, so you can easily customize it by tweaking a few varia
 
 Demo here: http://kurtnoble.com/labs/rrssb/
 
-This plugin is adapted from the RRSSB Github project you can find [here](https://github.com/knilabs/rrssb).
+This plugin is adapted from the RRSSB Github project you can find [here](https://github.com/kni-labs/rrssb).
 
 == Installation ==
 
