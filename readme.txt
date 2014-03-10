@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: aarreedd
-Donate link: http://alanreed.org/
+Donate link: http://alanreed.org/donate/
 Tags: Social, Sharing, Buttons, Ridiculously, Responsive
 Requires at least: 3.0.1
 Tested up to: 3.8

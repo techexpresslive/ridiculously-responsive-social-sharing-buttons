@@ -22,8 +22,8 @@ function rrssb_js()
 {
     wp_enqueue_script('jquery');
     
-    wp_register_script('rrssb-moder-min-script', plugins_url('/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', __FILE__ ) );
-    wp_enqueue_script('rrssb-moder-min-script');
+    wp_register_script('rrssb-modern-min-script', plugins_url('/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', __FILE__ ) );
+    wp_enqueue_script('rrssb-modern-min-script');
     
     wp_register_script('rrssb-min-script', plugins_url('/js/rrssb.min.js', __FILE__ ) );
     wp_enqueue_script('rrssb-min-script');
@@ -60,11 +60,11 @@ function rrssb_main($content)
         $content .= rrssb_twitter_btn();
         $content .= rrssb_reddit_btn();
         $content .= rrssb_google_btn();
-        $content .= rrssb_github_btn();
-        $content .= rrssb_instagram_btn();
-        $content .= rrssb_pinterest_btn();
-        $content .= rrssb_tumblr_btn();
-        $content .= rrssb_youtube_btn();
+        // $content .= rrssb_github_btn();
+        // $content .= rrssb_instagram_btn();
+        // $content .= rrssb_pinterest_btn();
+        // $content .= rrssb_tumblr_btn();
+        // $content .= rrssb_youtube_btn();
         
         $content .= '
 			</ul>
