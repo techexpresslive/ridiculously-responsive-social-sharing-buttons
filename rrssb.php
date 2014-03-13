@@ -3,7 +3,7 @@
 Plugin Name: Ridiculously Responsive Social Sharing Buttons
 Plugin URI: https://github.com/kni-labs/rrssb
 Description: Ridiculously Responsive Social Sharing Buttons adapted from https://github.com/kni-labs/rrssb.
-Version: trunk
+Version: 1.0
 Author: Alan Reed
 Author URI: http://www.alanreed.org
 Date: 8 March 2014
@@ -20,15 +20,12 @@ You should have received a copy of the GNU General Public License along with thi
 
 function rrssb_js()
 {
-    //wp_enqueue_script('jquery');
+	// Use rrssb jqeury file.
     wp_register_script('rrssb-jqeury', plugins_url('/js/vendor/jquery-1.9.1.min.js', __FILE__ ) );
     wp_enqueue_script('rrssb-jqeury');
     
     wp_register_script('rrssb-modern-min-script', plugins_url('/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', __FILE__ ) );
     wp_enqueue_script('rrssb-modern-min-script');
-    
-	wp_register_script('rrssb-min-script', plugins_url('/js/rrssb.js', __FILE__ ) );
-    wp_enqueue_script('rrssb-script');
 	
     wp_register_script('rrssb-min-script', plugins_url('/js/rrssb.min.js', __FILE__ ) );
     wp_enqueue_script('rrssb-min-script');
@@ -39,6 +36,7 @@ function rrssb_css()
 {
     wp_register_style('norm_stylesheet', plugins_url('css/normalize.min.css', __FILE__));
     wp_enqueue_style('norm_stylesheet');
+	
     wp_register_style('rrssb_stylesheet', plugins_url('css/rrssb.css', __FILE__));
     wp_enqueue_style('rrssb_stylesheet');
 }
@@ -58,7 +56,14 @@ function rrssb_main($content)
 			<div class="share-container clearfix">
 			<!-- buttons start here -->
 			<ul class="rrssb-buttons clearfix no-margin fix-line-height">';
-        
+
+	
+	/*
+	 * Edit below to reorder the buttons.
+	 * NOTE: Lines prefixed with `//` are ignored.
+	 *
+	 **/
+
         $content .= rrssb_email_btn();
         $content .= rrssb_facebook_btn();
         $content .= rrssb_linkedin_btn();
@@ -70,6 +75,7 @@ function rrssb_main($content)
         // $content .= rrssb_pinterest_btn();
         // $content .= rrssb_tumblr_btn();
         // $content .= rrssb_youtube_btn();
+	
         
         $content .= '
 			</ul>
@@ -109,7 +115,7 @@ function rrssb_linkedin_btn()
 {
 	$icon = file_get_contents('icons/linkedin.svg',true);
     $content = '<li class="linkedin">
-		<a href="http://www.linkedin.com/shareArticle?mini=true&url=' .  urlencode(get_permalink()) . '&title=' . (get_the_title() ) . '" class="popup">
+		<a href="http://www.linkedin.com/shareArticle?mini=true&url=' .  urlencode(get_permalink()) . '&title=' . urlencode(get_the_title() ) . '" class="popup">
 		<span class="icon">
 		'. $icon . '
 		</span>
@@ -144,7 +150,7 @@ function rrssb_google_btn()
 {
 	$icon = file_get_contents('icons/google_plus.svg',true);
     $content = '<li class="googleplus">
-		<a href="https://plus.google.com/share?url=' . urlencode(get_the_title() ) . ' - ' . ( get_permalink() ) .'" class="popup">
+		<a href="https://plus.google.com/share?url=' . urlencode(get_the_title() ) . ' - ' . urlencode( get_permalink() ) .'" class="popup">
 		<span class="icon">
 		'. $icon . '
 		</span>
@@ -155,7 +161,7 @@ function rrssb_github_btn()
 {
 	$icon = file_get_contents('icons/github.svg',true);
     $content = '<li class="github">
-		<a href="https://github.com/" class="popup">
+		<a href="https://github.com/###" class="popup">
 		<span class="icon">
 		'. $icon . '
 		</span>
@@ -166,7 +172,7 @@ function rrssb_instagram_btn()
 {
 	$icon = file_get_contents('icons/instagram.svg',true);
     $content = '<li class="instagram">
-		<a href="https://instagram.com/" class="popup">
+		<a href="https://instagram.com/###" class="popup">
 		<span class="icon">
 		'. $icon . '
 		</span>
@@ -177,7 +183,7 @@ function rrssb_pinterest_btn()
 {
 	$icon = file_get_contents('icons/pinterest.svg',true);
     $content = '<li class="pinterest">
-		<a href="https://pinterest.com/" class="popup">
+		<a href="https://pinterest.com/###" class="popup">
 		<span class="icon">
 		'. $icon . '
 		</span>
@@ -188,7 +194,7 @@ function rrssb_tumblr_btn()
 {
 	$icon = file_get_contents('icons/tumblr.svg',true);
     $content = '<li class="tumblr">
-		<a href="https://tumblr.com/" class="popup">
+		<a href="https://tumblr.com/### class="popup">
 		<span class="icon">
 		'. $icon . '
 		</span>
@@ -199,7 +205,7 @@ function rrssb_youtube_btn()
 {
 	$icon = file_get_contents('icons/youtube.svg',true);
     $content = '<li class="youtube">
-		<a href="https://youtube.com/" class="popup">
+		<a href="https://youtube.com/###" class="popup">
 		<span class="icon">
 		'. $icon . '
 		</span>
