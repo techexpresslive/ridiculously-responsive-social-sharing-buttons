@@ -48,6 +48,7 @@ function rrssb_main($content)
 {
     if (is_single()) {
         
+		$content .= rrssb_hide_unitl_load();
         $content .= '
 			<style>
 			.no-margin li {margin: 0!important;}
@@ -86,6 +87,27 @@ function rrssb_main($content)
 }
 
 add_filter('the_content', 'rrssb_main');
+
+/* Hide the buttons until after everything loads.
+ * This prevents the buttons from displaying before
+ *	adjusting to the container size.
+ **/
+function rrssb_hide_unitl_load()
+{
+	$hide_buttons = "<style>.share-container{display:none;}</style>";
+	$show_buttons = "
+	<script>
+		$( document ).ready(function() {
+		
+			$('.share-container').show();
+			
+			$(window).trigger('resize');
+			
+		});
+	</script>
+	";
+	return $hide_buttons . $show_buttons;
+}
 
 /* Functions for each different kind of button */
 
