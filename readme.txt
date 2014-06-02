@@ -20,7 +20,7 @@ Demo here: http://kurtnoble.com/labs/rrssb/
 
 This plugin is adapted from the RRSSB Github project you can find [here](https://github.com/kni-labs/rrssb).
 
-As there is no Admin Panel, setting up RRSSB may require minimal CSS and PHP knowledge. If you would like to write an Admin Panel I will be happy to add it to the plugin.
+As there is no Admin Panel, setting up RRSSB may require minimal CSS and PHP knowledge. If you would like to write an Admin Panel I will be happy to add it to the plugin. See the FAQ for information about how to customize the plugin. 
 
 == Installation ==
 
