@@ -29,6 +29,7 @@ $rrssb-googleplus: #e93f2e !default;
 $rrssb-reddit: #8bbbe3 !default;
 $rrssb-youtube: #df1c31 !default;
 $rrssb-pinterest: #b81621 !default;
+$rrssb-pocket: #ED4054 !default;
 $rrssb-github: #444 !default;
 
 $rrssb-border-radius: 2px !default;
@@ -46,6 +47,7 @@ $social-list: (
 	youtube			$rrssb-youtube,
 	reddit			$rrssb-reddit,
 	pinterest		$rrssb-pinterest,
+	pocket			$rrssb-pocket,
 	github			$rrssb-github
 );
 
@@ -98,6 +100,7 @@ $social-list: (
 		list-style: none;
 		margin: 0;
 		padding: 0 2.5px;
+		line-height: 13px;
 
 		// This generates individual button classes for each item in social list on line 39.
 		@each $s-name in $social-list {
@@ -191,6 +194,7 @@ $social-list: (
 				font-size: 1vw;  // scales font with browser
 				padding: 7% 0% 7% 12%;
 				border-radius: 0.2em;
+				line-height: 1vw;
 				@extend %backface-visibility;
 
 				.icon {
