@@ -3,7 +3,7 @@ Contributors: aarreedd
 Donate link: http://alanreed.org/donate/
 Tags: Social, Sharing, Buttons, Ridiculously, Responsive
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 3.9.1
 Stable tag: trunk
 License: Creative Commons Attribution-ShareAlike 4.0 International license
 License URI: http://creativecommons.org/licenses/by-sa/4.0/legalcode
@@ -22,6 +22,8 @@ This plugin is adapted from the RRSSB Github project you can find [here](https:/
 
 As there is no Admin Panel, setting up RRSSB may require minimal CSS and PHP knowledge. If you would like to write an Admin Panel I will be happy to add it to the plugin. See the FAQ for information about how to customize the plugin. 
 
+Support free software by [donating](http://www.alanreed.com/donate). If you are able to contribute, please do!
+
 == Installation ==
 
 1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
@@ -31,15 +33,25 @@ As there is no Admin Panel, setting up RRSSB may require minimal CSS and PHP kno
 
 = What sites are supported by RRSSB? =
 
-RRSSB supports Email, Facebook, Twitter, Linkdin, Reddit, Google+, Github, Youtube, Tumblr, Instagram and Pinterest.
+RRSSB supports Email, Facebook, Twitter, Linkdin, Reddit, Google+, Pocket, Github, Youtube, Tumblr, Instagram and Pinterest.
+
+= Where do the buttons show up? = 
+
+Once you install the plugin, the RRSSB buttons will appear below all of you posts. You can also use the shortcode [rrssb] to place the buttons anywhere.
 
 = Who made Ridiculously Resonsive Social Sharing Buttons? =
 
-It's on github. Check it out here: https://github.com/kni-labs/rrssb
+It's on github. Check it out [here](https://github.com/kni-labs/rrssb).
+
+The original RRSSB project was converted into a Wordpress Plugin by [Alan Reed](http://www.alanreed.org).
 
 = How do I customize the plugin? =
 
 There are no admin settings. To customize the plugin edit lines 67-77 in rrssb.php.
+
+= Is there a shortcode? =
+
+Yes, use the shortcode [rrssb] to place the buttons anywhere you like. 
 
 == Screenshots ==
 
