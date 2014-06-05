@@ -3,24 +3,89 @@
 Plugin Name: Ridiculously Responsive Social Sharing Buttons
 Plugin URI: https://wordpress.org/plugins/ridiculously-responsive-social-sharing-buttons/
 Description: Ridiculously Responsive Social Sharing Buttons adapted from https://github.com/kni-labs/rrssb.
-Version: 1.0
+Version: 2.0
 Author: Alan Reed
 Author URI: http://www.alanreed.org
-Date: 2 June 2014
+Date: 4 June 2014
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+include( 'rrssb_admin.php' );
+
+/* On Activation & Decativation */
+
+function activate_rrssb() {	
+	add_option('show_email'		, 1);
+	add_option('show_facebook'	, 1);
+	add_option('show_linkedin'	, 1);
+	add_option('show_twitter'	, 1);
+	add_option('show_reddit'	, 1);
+	add_option('show_google'	, 1);
+	add_option('show_pocket'	, 1);
+	add_option('show_github'	, 0);
+	add_option('show_instagram'	, 0);
+	add_option('show_pinterest'	, 0);
+	add_option('show_tumblr'	, 0);
+	add_option('show_youtube'	, 0);
+	
+	add_option('github_link'	, "");
+	add_option('instagram_link'	, "");
+	add_option('pinterest_link', "");
+	add_option('tumblr_link'	, "");
+	add_option('youtube_link'	, "");
+	
+	add_option('give_rrssb_credit'	, 1);
+	add_option('show_buttons_under_post', 1);
+	add_option('use_rrssb_jquery'	, 1);
+	add_option('help_improve_rrssb'	, 1);
+	add_option('rrssb_css' , ".no-margin li {margin: 0!important;}");
+	add_option('rrssb_css_classes' , "no-margin");
+}
+
+function deactive_rrssb() {  
+  	delete_option('show_email');
+	delete_option('show_facebook');
+	delete_option('show_linkedin');
+	delete_option('show_twitter');
+	delete_option('show_reddit');
+	delete_option('show_google');
+	delete_option('show_pocket');
+	delete_option('show_github');
+	delete_option('show_instagram');
+	delete_option('show_pinterest');
+	delete_option('show_tumblr');
+	delete_option('show_youtube');
+	
+	delete_option('github_link');
+	delete_option('instagram_link');
+	delete_option('pinterest_link');
+	delete_option('tumblr_link');
+	delete_option('youtube_link');
+	
+	delete_option('give_rrssb_credit');
+	delete_option('show_buttons_under_post');
+	delete_option('use_rrssb_jquery');
+	delete_option('help_improve_rrssb');
+	delete_option('rrssb_css');
+	delete_option('rrssb_css_classes');
+}
+
+register_activation_hook(__FILE__, 'activate_rrssb');
+register_deactivation_hook(__FILE__, 'deactive_rrssb');
+
 /* CSS and JS */
 
 function rrssb_js()
 {
 	// Use latest jqeury file.
-	wp_deregister_script('jquery');
-	wp_enqueue_script('jquery', 'http://code.jquery.com/jquery-latest.min.js ', array(), false, true);
-	
+	if ( 1 == get_option('use_rrssb_jquery') ) 
+	{
+		wp_deregister_script('jquery');
+		wp_enqueue_script('jquery', 'http://code.jquery.com/jquery-latest.min.js ', array(), false, true);
+	}
 	// Use RRSSB's jquery file.
 	// wp_register_script('rrssb-jqeury', plugins_url('/js/vendor/jquery-1.9.1.min.js', __FILE__ ) );
 	// wp_enqueue_script('rrssb-jqeury');
@@ -44,104 +109,6 @@ function rrssb_css()
 }
 add_action('wp_enqueue_scripts', 'rrssb_css' );
 
-/* On Activation/ Decativation */
-/*
-public function rrssb_activate() {
-	update_option($this->option_name, $this->data);
-}
-
-public function rrssb_deactivate() {
-	delete_option($this->option_name);
-}
-
-// Listen for the activate event
-register_activation_hook(__FILE__, array($this, 'rrssb_activate'));
-
-// Deactivation plugin
-register_deactivation_hook(__FILE__, array($this, 'rrssb_deactivate'));
-*/
-/* Admin Panel */
-/*
-	// Name of the array
-	$option_name = 'tz-todo';
-
-	// Default values
-	$data = array(
-		'url_todo' => 'todo',
-		'title_todo' => 'Todo List'
-	);
-
-	add_action('admin_init', array($this, 'admin_init'));
-	add_action('admin_menu', array($this, 'add_page'));
-
-    // White list our options using the Settings API
-    function admin_init() {
-        register_setting('todo_list_options', $this->option_name, array($this, 'validate'));
-    }
-
-    // Add entry in the settings menu
-    function add_page() {
-        add_options_page('RRSSB Options', 'RRSSB Options', 'manage_options', 'todo_list_options', array($this, 'options_do_page'));
-    }
-
-    // Print the menu page itself
-    function options_do_page() {
-        $options = get_option($option_name);
-        ?>
-        <div class="wrap">
-            <h2>Todo List Options</h2>
-            <form method="post" action="options.php">
-                <?php settings_fields('todo_list_options'); ?>
-                <table class="form-table">
-                    <tr valign="top"><th scope="row">App URL:</th>
-                        <td><input type="text" name="<?php echo $this->option_name?>[url_todo]" value="<?php echo $options['url_todo']; ?>" /></td>
-                    </tr>
-                    <tr valign="top"><th scope="row">Title:</th>
-                        <td><input type="text" name="<?php echo $this->option_name?>[title_todo]" value="<?php echo $options['title_todo']; ?>" /></td>
-                    </tr>
-                </table>
-                <p class="submit">
-                    <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-                </p>
-            </form>
-        </div>
-        <?php
-    }
-
-    function validate($input) {
-
-        $valid = array();
-        $valid['url_todo'] = sanitize_text_field($input['url_todo']);
-        $valid['title_todo'] = sanitize_text_field($input['title_todo']);
-
-        if (strlen($valid['url_todo']) == 0) {
-            add_settings_error(
-                    'todo_url', 					// setting title
-                    'todourl_texterror',			// error ID
-                    'Please enter a valid URL',		// error message
-                    'error'							// type of message
-            );
-			
-			# Set it to the default value
-			$valid['url_todo'] = $this->data['url_todo'];
-        }
-        if (strlen($valid['title_todo']) == 0) {
-            add_settings_error(
-                    'todo_title',
-                    'todotitle_texterror',
-                    'Please enter a title',
-                    'error'
-            );
-			
-			$valid['title_todo'] = $this->data['title_todo'];
-        }
-		
-        return $valid;
-    }
-	*/
-	
-/* End Admin Panel */
-
 /* Add shortcode */
 
 function rrssb_show_buttons_shortcode()
@@ -157,39 +124,47 @@ function rrssb_show_buttons($content = "")
 {
 	$content .= '
 		<style>
-			.no-margin li {margin: 0!important;}
+			' . get_option('rrssb_css') . '
 		</style>
 		<div class="share-container clearfix">
-			<span class="label"><-- Put a label here. !--></span>
+			<span class="label"><!-- Put an optional label here. --></span>
 		<!-- buttons start here -->
-		<ul class="rrssb-buttons clearfix no-margin">';
+		<ul class="rrssb-buttons clearfix ' . get_option('rrssb_css_classes') . '">';
 
-	/*
-	 * Edit below to reorder the buttons.
-	 * NOTE: Lines prefixed with `//` are ignored - Use this to add or remove buttons.
-	 *
-	 **/
-
-	$content .= rrssb_email_btn();
-	$content .= rrssb_facebook_btn();
-	$content .= rrssb_linkedin_btn();
-	$content .= rrssb_twitter_btn();
-	$content .= rrssb_reddit_btn();
-	$content .= rrssb_google_btn();
-	$content .= rrssb_pocket_btn();
-	// $content .= rrssb_github_btn();
-	// $content .= rrssb_instagram_btn();
-	// $content .= rrssb_pinterest_btn();
-	// $content .= rrssb_tumblr_btn();
-	// $content .= rrssb_youtube_btn();
+	if ( 1 == get_option('show_email') ) 
+		$content .= rrssb_email_btn();
+	if ( 1 == get_option('show_facebook') ) 
+		$content .= rrssb_facebook_btn();
+	if ( 1 == get_option('show_linkedin') ) 
+		$content .= rrssb_linkedin_btn();
+	if ( 1 == get_option('show_twitter') ) 
+		$content .= rrssb_twitter_btn();
+	if ( 1 == get_option('show_reddit') ) 
+		$content .= rrssb_reddit_btn();
+	if ( 1 == get_option('show_google') ) 
+		$content .= rrssb_google_btn();
+	if ( 1 == get_option('show_pocket') ) 
+		$content .= rrssb_pocket_btn();
+	if ( 1 == get_option('show_github') ) 
+		$content .= rrssb_github_btn();
+	if ( 1 == get_option('show_instagram') ) 
+		$content .= rrssb_instagram_btn();
+	if ( 1 == get_option('show_pinterest') ) 
+		$content .= rrssb_pinterest_btn();
+	if ( 1 == get_option('show_tumblr') ) 
+		$content .= rrssb_tumblr_btn();
+	if ( 1 == get_option('show_youtube') ) 
+		$content .= rrssb_youtube_btn();
 	
-	/*
-	 * Stop editing here.
-	 *
-	 **/
+	$content .= '</ul>';
 	
+	if ( 1 == get_option('give_rrssb_credit') )
+		$content .= '
+		<label><small>Buttons by 
+		<a href="https://wordpress.org/plugins/ridiculously-responsive-social-sharing-buttons/">RRSSB</a>
+		</small></label>';
+		
 	$content .= '
-		</ul>
 		<!-- buttons end here -->
 		</div>';
     
@@ -198,7 +173,7 @@ function rrssb_show_buttons($content = "")
 
 function rrssb_show_buttons_on_single($content)
 {
-    if ( is_single() ) {
+    if ( is_single() && ( 1 == get_option('show_buttons_under_post') )  ) {
 		$content = rrssb_show_buttons($content);
 	}
 	return $content;
@@ -222,7 +197,7 @@ function rrssb_facebook_btn()
 {
 	$icon = file_get_contents('icons/facebook.svg',true);
     $content = '<li class="facebook">
-		<a href="https://www.facebook.com/sharer/sharer.php?u=' .urlencode( get_permalink() ) . ' " class="popup">
+		<a href="https://facebook.com/sharer/sharer.php?u=' .urlencode( get_permalink() ) . ' " class="popup">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -233,7 +208,7 @@ function rrssb_linkedin_btn()
 {
 	$icon = file_get_contents('icons/linkedin.svg',true);
     $content = '<li class="linkedin">
-		<a href="http://www.linkedin.com/shareArticle?mini=true&url=' .  urlencode( get_permalink() ) . '&title=' . urlencode( get_the_title() ) . '" class="popup">
+		<a href="https://linkedin.com/shareArticle?mini=true&url=' .  urlencode( get_permalink() . '&title=' . get_the_title() ) . '" class="popup">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -245,7 +220,7 @@ function rrssb_twitter_btn()
 	$icon = file_get_contents('icons/twitter.svg',true);
 	// TODO: Allow user to choose between get_permalink() and wp_get_shortlink()
     $content = '<li class="twitter">
-		<a href="http://twitter.com/home?status=' . urlencode( get_the_title() )  . ' - ' . urlencode( wp_get_shortlink() ). '" class="popup">
+		<a href="https://twitter.com/home?status=' . urlencode( get_the_title() . ' - ' . get_permalink() ). '" class="popup">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -256,7 +231,7 @@ function rrssb_reddit_btn()
 {
 	$icon = file_get_contents('icons/reddit.svg',true);
     $content = '<li class="reddit">
-		<a href="http://www.reddit.com/submit?url=' . urlencode( get_permalink() ) . '" class="popup">
+		<a href="http://reddit.com/submit?url=' . urlencode( get_permalink() ) . '" class="popup">
 		<span class="icon">
 		' .$icon. '
 		</span>
@@ -267,7 +242,7 @@ function rrssb_google_btn()
 {
 	$icon = file_get_contents('icons/google_plus.svg',true);
     $content = '<li class="googleplus">
-		<a href="https://plus.google.com/share?url=' . urlencode( get_the_title() ) . ' - ' . urlencode( get_permalink() ) .'" class="popup">
+		<a href="https://plus.google.com/share?url=' . urlencode( get_the_title() . ' - ' . get_permalink() ) .'" class="popup">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -288,7 +263,7 @@ function rrssb_github_btn()
 {
 	$icon = file_get_contents('icons/github.svg',true);
     $content = '<li class="github">
-		<a href="https://github.com/###" class="popup">
+		<a href="https://github.com/' . get_option('github_link') . '" target="_blank">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -299,7 +274,7 @@ function rrssb_instagram_btn()
 {
 	$icon = file_get_contents('icons/instagram.svg',true);
     $content = '<li class="instagram">
-		<a href="https://instagram.com/###" class="popup">
+		<a href="http://instagram.com/' . get_option('instagram_link') . '" target="_blank">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -310,7 +285,7 @@ function rrssb_pinterest_btn()
 {
 	$icon = file_get_contents('icons/pinterest.svg',true);
     $content = '<li class="pinterest">
-		<a href="https://pinterest.com/###" class="popup">
+		<a href="http://pinterest.com/' . get_option('pinterest_link') . '" target="_blank">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -321,7 +296,7 @@ function rrssb_tumblr_btn()
 {
 	$icon = file_get_contents('icons/tumblr.svg',true);
     $content = '<li class="tumblr">
-		<a href="https://tumblr.com/### class="popup">
+		<a href="http://tumblr.com/' . get_option('tumblr_link') . '" target="_blank">
 		<span class="icon">
 		' . $icon . '
 		</span>
@@ -332,7 +307,7 @@ function rrssb_youtube_btn()
 {
 	$icon = file_get_contents('icons/youtube.svg',true);
     $content = '<li class="youtube">
-		<a href="https://youtube.com/###" class="popup">
+		<a href="http://youtube.com/' . get_option('youtube_link') . '" target="_blank">
 		<span class="icon">
 		' . $icon . '
 		</span>

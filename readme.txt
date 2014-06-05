@@ -53,6 +53,14 @@ There are no admin settings. To customize the plugin edit lines 67-77 in rrssb.p
 
 Yes, use the shortcode [rrssb] to place the buttons anywhere you like. 
 
+== Changelog ==
+
+= V2.0 - 04.06.2014 =
+* Update : We updated all functionality for wordpress 3.9.1.
+* NEW : We added a shortcode! - [rrssb]
+* NEW : We added an Admin Menu!
+* Bugfix : We fixed the bug with RRSSB's JQuery file interfering with other JQuery files.
+
 == Screenshots ==
 
 1. screenshot-1.jpg
