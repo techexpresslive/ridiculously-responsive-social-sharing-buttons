@@ -20,7 +20,7 @@ Demo here: http://kurtnoble.com/labs/rrssb/
 
 This plugin is adapted from the RRSSB Github project you can find [here](https://github.com/kni-labs/rrssb).
 
-As there is no Admin Panel, setting up RRSSB may require minimal CSS and PHP knowledge. If you would like to write an Admin Panel I will be happy to add it to the plugin. See the FAQ for information about how to customize the plugin. 
+There is now an Admin Menu that allows you to customize the look of your buttons. You can place the buttons under each of your posts or place the buttons anywhere with the shortcode [rrssb]!
 
 Support free software by [donating](http://www.alanreed.com/donate). If you are able to contribute, please do!
 
@@ -47,11 +47,11 @@ The original RRSSB project was converted into a Wordpress Plugin by [Alan Reed](
 
 = How do I customize the plugin? =
 
-There are no admin settings. To customize the plugin edit lines 67-77 in rrssb.php.
+Use the Admin Menu to decide which buttons to show and where. 
 
 = Is there a shortcode? =
 
-Yes, use the shortcode [rrssb] to place the buttons anywhere you like. 
+Yes, use the shortcode [rrssb] to place the buttons anywhere!
 
 == Changelog ==
 
