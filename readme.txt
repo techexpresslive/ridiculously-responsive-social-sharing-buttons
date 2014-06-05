@@ -22,8 +22,6 @@ This plugin is adapted from the RRSSB Github project you can find [here](https:/
 
 There is now an Admin Menu that allows you to customize the look of your buttons. You can place the buttons under each of your posts or place the buttons anywhere with the shortcode [rrssb]!
 
-Support free software by [donating](http://www.alanreed.com/donate). If you are able to contribute, please do!
-
 == Installation ==
 
 1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
