@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: aarreedd
 Donate link: http://alanreed.org/donate/
-Tags: Social, Sharing, Buttons, Ridiculously, Responsive
+Tags: Social, Sharing, Buttons, Ridiculously, Responsive, Facebook, Twitter, Pinsterest, Pocket
 Requires at least: 3.0
 Tested up to: 3.9.1
 Stable tag: trunk
